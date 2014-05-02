@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //Proceso de conexión con la base de datos
 include("conec.php");
 $conex =conectarse();
@@ -6,7 +6,7 @@ $conex =conectarse();
 //Iniciar Sesión
 session_start();
 
-    $inactivo = 1000;
+   // $inactivo = 1000;
 
 
     /*if(isset($_SESSION['tiempo']) ) {
@@ -33,7 +33,12 @@ self.location = "login.php"
 </script>';
 }
 
-$identificacion = $_SESSION['identificacion'];
+// $identificacion = $_SESSION['identificacion'];
+// $consulta= "SELECT apellidos,edad FROM usuarios WHERE id_usuario='".$id_usuario."'";
+// $resultado= mysql_query($consulta,$conex) or die (mysql_error());
+// $fila=mysql_fetch_array($resultado);
+// $apellidos = $fila['apellidos'];
+// $edad = $fila['edad'];
 
 ?>
 <!DOCTYPE html>
@@ -94,13 +99,13 @@ $identificacion = $_SESSION['identificacion'];
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <img alt="" src="images/avatar1_small.jpg">
-                        <span class="username"><?php echo $_SESSION['nombre'];?></span>
+                        <span class="username">Autentificado: <?php echo $_SESSION['nombre'];?></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Perfil</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Configuración</a></li>
-                        <li><a href="login.html"><i class="fa fa-key"></i> Salir</a></li>
+                        <li><a href="login.php"><i class="fa fa-key"></i> Salir</a></li>
                     </ul>
                 </li>
                 <!-- user login dropdown end -->
@@ -122,8 +127,8 @@ $identificacion = $_SESSION['identificacion'];
                         <span>Registro</span>
                     </a>
                     <ul class="collapsed-nav closed">
-                        <li><a href="registrar_empresa.html">Registrar Empresa</a></li>
-                        <li><a href="registrar_usuario.html">Registrar Usuario</a></li>
+                        <li><a href="registrar_empresa.php">Registrar Empresa</a></li>
+                        <li><a href="registrar_usuario.php">Registrar Usuario</a></li>
                     </ul>
                 </li>
             </ul>

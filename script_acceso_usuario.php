@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 //Proceso de conexión con la base de datos
 include("conec.php");
 $conex =conectarse();
@@ -16,7 +16,7 @@ $contrasena= $_POST['contrasena'];
 //Consultar si los datos son están guardados en la base de datos
 $consulta= "SELECT * FROM usuarios WHERE id_usuario='".$identificacion."' AND contrasena='".$contrasena."'"; 
 $resultado= pg_query($conex, $consulta) or die (pg_error());
-echo "$consulta";
+
 $fila=pg_fetch_array($resultado);
 
 
@@ -37,6 +37,8 @@ else //opcion2: Usuario logueado correctamente
 { 
 //Definimos las variables de sesión y redirigimos a la página de usuario
 	$_SESSION['nombre'] = $fila['nombre'];
+	$_SESSION['rol'] = $fila['rol'];
+	$_SESSION['idEmpresa'] = $fila['id_empresa'];
 	$_SESSION['identificacion'] = $fila['id_Usuario'];
    header("Location: index.php");
 

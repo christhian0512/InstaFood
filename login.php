@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -25,7 +25,7 @@
 
     <div class="container">
 
-      <form class="form-signin" form action="script_acceso_usuario.php" autocomplete="off" method="post" form name="acceso">
+      <form class="form-signin" form action="script_acceso_usuario.php" autocomplete="off" method="post" formm name="acceso">
         <h2 class="form-signin-heading"><img src="images/logo.png" width="224" height="58"></h2>
         <div class="login-wrap">
             <div class="user-login-info">

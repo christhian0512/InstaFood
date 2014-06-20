@@ -6,6 +6,7 @@ $conex =conectarse();
 //Iniciar Sesión
 session_start();
 $rolIngresado = $_SESSION['rol'];
+$empresaIngresado = $_SESSION['idEmpresa'];
 
    // $inactivo = 1000;
 
@@ -34,12 +35,6 @@ self.location = "login.php"
 </script>';
 }
 
-// $identificacion = $_SESSION['identificacion'];
-// $consulta= "SELECT apellidos,edad FROM usuarios WHERE id_usuario='".$id_usuario."'";
-// $resultado= mysql_query($consulta,$conex) or die (mysql_error());
-// $fila=mysql_fetch_array($resultado);
-// $apellidos = $fila['apellidos'];
-// $edad = $fila['edad'];
 
 ?>
 <!DOCTYPE html>
@@ -90,7 +85,7 @@ self.location = "login.php"
         <!--logo start-->
         <div class="brand">
 
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="images/logo.png" width="182" height="49">
             </a>
             <div class="sidebar-toggle-box">
@@ -128,20 +123,152 @@ self.location = "login.php"
     <!--header end-->
     <!--sidebar start-->
     <aside>
-        <div id="sidebar" class="nav-collapse" >
+          <div id="sidebar" class="nav-collapse" >
             <!-- sidebar menu start-->
             <ul class="sidebar-menu clearfix" id="nav-accordion">
                 
-                <li class="sub-menu" >
-                    <a href="javascript:;">
-                        <i class="fa fa-edit"></i>
-                        <span>Registro</span>
-                    </a>
-                    <ul class="collapsed-nav closed">
-                        <li><a href="registrar_empresa.php">Registrar Empresa</a></li>
-                        <li><a href="registrar_usuario.php">Registrar Usuario</a></li>
-                    </ul>
-                </li>
+               
+                                    <?php if($rolIngresado == "admin"){?>
+
+                                            <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-book"></i>
+                                                    <span>Registro</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">                               
+                                                    <li><a href="registrar_empresa.php">Registrar Empresa</a></li>
+                                                    <li><a href="registrar_usuario.php">Registrar Usuario</a></li>
+                                                </ul>
+                                            </li>
+
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-cutlery"></i>
+                                                    <span>Gestión de Platos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="registrar_plato.php">Registrar Platos</a></li>
+                                                    <li><a href="visualizar_platos.php">Visualizar Platos</a></li>
+                                                    <li><a href="registrar_adicion_plato.php">Regitrar Adición</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Gestión de Pedidos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="registrar_pedido.php">Registrar Pedido</a></li>
+                                                    <li><a href="visualizar_pedidos.php">Visualizar Pedidos</a></li>
+                                                </ul>
+                                            </li>
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <span>Reportes</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="reporte_ventas.php">Ventas Totales</a></li>
+                                                    <li><a href="reporte_platos.php">Reporte Platos</a></li>
+                                                    <li><a href="reporte_variabilidad.php">Reporte Variabilidad</a></li>
+                                                </ul>
+                                            </li>
+
+
+                                       <?php }; ?>
+                                     <?php if($rolIngresado == "Administrador"){?>
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-book"></i>
+                                                    <span>Registro</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">                               
+                                                    <li><a href="registrar_usuario.php">Registrar Usuario</a></li>
+                                                </ul>
+                                            </li>
+
+                                               <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-cutlery"></i>
+                                                    <span>Gestión de Platos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="registrar_plato.php">Registrar Platos</a></li>
+                                                    <li><a href="visualizar_platos.php">Visualizar Platos</a></li>
+                                                    <li><a href="registrar_adicion_plato.php">Regitrar Adición</a></li>
+                                                </ul>
+                                            </li>
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Gestión de Pedidos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="registrar_pedido.php">Registrar Pedido</a></li>
+                                                    <li><a href="visualizar_pedidos.php">Visualizar Pedidos</a></li>
+                                                </ul>
+                                            </li>
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <span>Reportes</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="reporte_ventas.php">Ventas Totales</a></li>
+                                                    <li><a href="reporte_platos.php">Reporte Platos</a></li>
+                                                    <li><a href="reporte_variabilidad.php">Reporte Variabilidad</a></li>
+                                                </ul>
+                                            </li>
+
+
+
+
+                                       <?php }; ?>
+
+                                       <?php if($rolIngresado == "Cajero"){?>
+
+                                          <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-cutlery"></i>
+                                                    <span>Gestión de Platos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    
+                                                    <li><a href="visualizar_platos.php">Visualizar Platos</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Gestión de Pedidos</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="registrar_pedido.php">Registrar Pedido</a></li>
+                                                     <li><a href="visualizar_pedidos.php">Visualizar Pedidos</a></li>
+                                                </ul>
+                                            </li>
+
+                                             <li class="sub-menu" >
+                                                <a href="javascript:;">
+                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <span>Reportes</span>
+                                                </a>
+                                                <ul class="collapsed-nav closed">
+                                                    <li><a href="reporte_ventas.php">Ventas Totales</a></li>
+                                                    <li><a href="reporte_platos.php">Reporte Platos</a></li>
+                                                    <li><a href="reporte_variabilidad.php">Reporte Variabilidad</a></li>
+                                                </ul>
+                                            </li>
+
+                                       <?php }; ?>
+
             </ul>
             <!-- sidebar menu end-->
         </div>
@@ -164,7 +291,7 @@ self.location = "login.php"
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal " action="script_registrar_usuario.php" id="signupForm" method="POST" action="#">
+                                <form class="cmxform form-horizontal " action="script_registrar_usuario.php" id="signupForm" method="POST"  enctype="multipart/form-data" >
                                     <div class="form-group ">
 
                                         <label for="nombreUsuario" class="control-label col-lg-3">Nombre: </label>
@@ -177,7 +304,7 @@ self.location = "login.php"
 
                                         <label for="cedulaUsuario" class="control-label col-lg-3">Cédula: </label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="cedulaUsuario" name="cedulaUsuario" type="text" required />
+                                            <input class=" form-control" id="cedulaUsuario" name="cedulaUsuario" type="number" required />
                                         </div>
 
                                     </div>
@@ -186,7 +313,7 @@ self.location = "login.php"
 
                                         <label for="nit" class="control-label col-lg-3">Rol: </label>
                                         <div class="col-lg-6">
-                                           <select class="form-control m-bot15" name="rolseleccionado">
+                                           <select class="form-control m-bot15" name="rolseleccionado" required>
                                                 <option>Administrador</option>
                                                 <option>Cajero</option>
                                              </select>
@@ -209,15 +336,16 @@ self.location = "login.php"
                                             $consulta_empresas='select * from empresas';
                                             $consulta=pg_query($conex,$consulta_empresas);
                                               
-                                            echo '<select class="form-control m-bot15" name="idEmpresa">';
+                                            echo '<select class="form-control m-bot15" name="idEmpresa" required>';
                                             while($fila=pg_fetch_array($consulta)){
                                                 echo "<option>".$fila['id_empresa'].'</option>';
                                             }
                                             echo '</select>';
                                             ?>
                                        <?php }; ?>
-                                     <?php if($rolIngresado != "Administrador"){?>
-                                            <input class="form-control " id="nombreEmpresa" name="idEmpresa" type="text" placeholder=<?php echo $_SESSION['idEmpresa'];?> disabled />
+                                     <?php if($rolIngresado == "Administrador"){?>
+
+                                            <input class="form-control" name="idEmpresa" type="text" value = <?php echo $empresa=$_SESSION['idEmpresa']; ?> readonly/>
                                        <?php }; ?>
                                         </div>
                                     </div>
@@ -225,7 +353,7 @@ self.location = "login.php"
                         
                                      <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
+                                            <button class="btn btn-primary" name = "submit" type="submit">Guardar</button>
                                             <button class="btn btn-default" type="button">Cancelar</button>
                                         </div>
                                     </div>
@@ -248,60 +376,64 @@ self.location = "login.php"
 
 <!-- Placed js at the end of the document so the pages load faster -->
 <!--Core js-->
+<script src="js/jquery.js"></script>
+<script src="js/less.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.uniform.min.js"></script>
+<script src="js/bootstrap.timepicker.js"></script>
+<script src="js/bootstrap.datepicker.js"></script>
+<script src="js/chosen.jquery.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/plupload/plupload.full.js"></script>
+<script src="js/plupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script src="js/jquery.cleditor.min.js"></script>
+<script src="js/jquery.inputmask.min.js"></script>
+<script src="js/jquery.tagsinput.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.textareaCounter.plugin.js"></script>
+<script src="js/ui.spinner.js"></script>
+<script src="js/jquery.jgrowl_minimized.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/bbq.js"></script>
+<script src="js/jquery-ui-1.8.22.custom.min.js"></script>
+<script src="js/jquery.form.wizard-min.js"></script>
+<script src="js/custom.js"></script>
+
+
 <script src="js/lib/jquery.js"></script>
-<script src="assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="js/lib/jquery-1.8.3.min.js"></script>
 <script src="bs3/js/bootstrap.min.js"></script>
-<script src="js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/lib/jquery-ui-1.9.2.custom.min.js"></script>
+<script class="include" type="text/javascript" src="js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
 <script src="js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="assets/easypiechart/jquery.easypiechart.js"></script>
 <script src="js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-<script src="assets/skycons/skycons.js"></script>
-<script src="assets/jquery.scrollTo/jquery.scrollTo.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="assets/calendar/clndr.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-<script src="assets/calendar/moment-2.2.1.js"></script>
-<script src="js/calendar/evnt.calendar.init.js"></script>
-<script src="assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="assets/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
-<script src="assets/gauge/gauge.js"></script>
 
 <script src="assets/bootstrap-switch-master/build/js/bootstrap-switch.js"></script>
 
-<script type="text/javascript" src="assets/fuelux/js/spinner.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-<script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-<script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
 <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="assets/bootstrap-daterangepicker/moment.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.multi-select.js"></script>
-<script type="text/javascript" src="assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
-<script type="text/javascript" src="js/jquery-validate/jquery.validate.min.js"></script>
-<!--clock init-->
-<script src="assets/css3clock/js/script.js"></script>
+
+
+
+
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+
+<script src="js/toggle-button/toggle-init.js"></script>
+
+<script src="js/advanced-form/advanced-form.js"></script>
 <!--Easy Pie Chart-->
 <script src="assets/easypiechart/jquery.easypiechart.js"></script>
 <!--Sparkline Chart-->
 <script src="assets/sparkline/jquery.sparkline.js"></script>
-<!--Morris Chart-->
-<script src="assets/morris-chart/morris.js"></script>
-<script src="assets/morris-chart/raphael-min.js"></script>
 <!--jQuery Flot Chart-->
 <script src="assets/flot-chart/jquery.flot.js"></script>
 <script src="assets/flot-chart/jquery.flot.tooltip.min.js"></script>
 <script src="assets/flot-chart/jquery.flot.resize.js"></script>
 <script src="assets/flot-chart/jquery.flot.pie.resize.js"></script>
-<script src="assets/flot-chart/jquery.flot.animator.min.js"></script>
-<script src="assets/flot-chart/jquery.flot.growraf.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/custom-select/jquery.customSelect.min.js" ></script>
-<!--common script init for all pages-->
-<script src="js/scripts.js"></script>
 
 <!--script for this page-->
 </body>

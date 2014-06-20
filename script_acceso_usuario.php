@@ -16,7 +16,6 @@ $contrasena= $_POST['contrasena'];
 //Consultar si los datos son están guardados en la base de datos
 $consulta= "SELECT * FROM usuarios WHERE id_usuario='".$identificacion."' AND contrasena='".$contrasena."'"; 
 $resultado= pg_query($conex, $consulta) or die (pg_error());
-
 $fila=pg_fetch_array($resultado);
 
 

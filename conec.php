@@ -1,7 +1,7 @@
 <?php
 function conectarse() {
 $user = 'postgres';
-$passwd = 'katty09';
+$passwd = 'root';
 $db = 'instafood';
 $port = 5432;
 $host = 'localhost';

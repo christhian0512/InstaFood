@@ -13,10 +13,12 @@ if(isset($_POST['submit'])) {
     $nombre = $_FILES['logoEmpresa']['name'];
     $tipo = $_FILES['logoEmpresa']['type'];
     $tamano = $_FILES['logoEmpresa']['size'];
-    echo "Aqui nombre imagen $nombre";
+   // echo "Aqui nombre imagen $nombre";
  
     // Muevo la imagen desde su ubicación
     // temporal al directorio definitivo
+    
+    chmod($directorio, 0777);
     move_uploaded_file($_FILES['logoEmpresa']['tmp_name'],$directorio.$nombre);
   
  
@@ -26,7 +28,6 @@ if(isset($_POST['submit'])) {
 	pg_escape_string($_POST['direccionEmpresa']) . "','" .
 	pg_escape_string($_POST['telEmpresa']) . "','" .
 	pg_escape_string($_POST['urlEmpresa']) . "','$nombre')";
-echo "$consulta";
 
 $result = pg_query($conex, $consulta);
   if (!$result) {
@@ -53,7 +54,7 @@ echo '<script language = javascript>
     else {
     	'<script language = javascript>
 	alert("Error, Todavia NO Ha Selecionado Nada")
-	self.location = "registrar_empresa.html"
+	self.location = "registrar_empresa.php"
 	</script>';
 
        
